@@ -16,5 +16,5 @@ class TestParkingGarage(TestCase):
         self.assertTrue(occupied)
 
     def test_check_occupancy_raises_error(self):
-        system = ParkingGarage
+        system = ParkingGarage()
         self.assertRaises(ParkingGarageError, system.check_occupancy, -1)
