@@ -41,3 +41,10 @@ class TestParkingGarage(TestCase):
         mock_time.return_value = datetime(2024, 11, 6, 16, 0)
         fee = system.calculate_parking_fee(datetime(2024, 11, 6, 14, 1))
         self.assertEqual(5, fee)
+
+    @patch.object(ParkingGarage, "change_servo_angle")
+    def test_open_garage_door(self, mock_serve: Mock):
+        system = ParkingGarage()
+        system.open_garage_door()
+        mock_serve.assert_called_with(12)
+        self.assertTrue(system.open_garage_door)
